@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Checkout</h3>
+<p>Total amount: <strong>Rs. {{ "%.2f"|format(amount) }}</strong></p>
+
+<form method="post">
+  <button class="btn btn-primary">Pay with Card (Stripe Checkout)</button>
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Recharge Wallet</h2>
+<form method="POST">
+    <label>User</label>
+    <select name="user_id" class="form-control">
+        {% for u in users %}
+        <option value="{{ u.id }}">{{ u.name }} (Wallet: ₹{{ "%.2f"|format(u.wallet or 0) }})</option>
+        {% endfor %}
+    </select>
+    <label>Amount</label>
+    <input type="number" step="0.01" name="amount" required>
+    <button type="submit" class="btn btn-primary">Recharge</button>
+</form>
+{% endblock %}

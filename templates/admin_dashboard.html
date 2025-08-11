@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+  <h3>Admin Dashboard</h3>
+  <div class="row g-3 mt-3">
+    <div class="col-md-3">
+      <div class="card card-summary p-3">
+        <div>Total Orders</div>
+        <h4>{{ total_orders }}</h4>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-summary p-3">
+        <div>Paid Orders</div>
+        <h4>{{ paid_orders }}</h4>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-summary p-3">
+        <div>Pending Orders</div>
+        <h4>{{ pending_orders }}</h4>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card card-summary p-3">
+        <div>Total Users</div>
+        <h4>{{ total_users }}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h5>Recent Orders</h5>
+    <table class="table table-striped">
+      <thead><tr><th>Order</th><th>User</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead>
+      <tbody>
+        {% for o in recent_orders %}
+        <tr>
+          <td>#{{ o.id }}</td>
+          <td>{{ o.user_id }}</td>
+          <td>Rs. {{ o.total_amount }}</td>
+          <td>{{ o.status }}</td>
+          <td><a class="btn btn-sm btn-outline-primary" href="{{ url_for('download_ticket', order_id=o.id) }}">Ticket PDF</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

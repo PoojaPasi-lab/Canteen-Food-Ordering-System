@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Customer Tickets / Orders</h4>
+<table class="table mt-3">
+  <thead><tr><th>#</th><th>Customer</th><th>Amount</th><th>Status</th><th>Ticket</th></tr></thead>
+  <tbody>
+  {% for t in tickets %}
+    <tr>
+      <td>{{ t.id }}</td>
+      <td>{{ t.user_id }}</td>
+      <td>Rs. {{ t.total_amount }}</td>
+      <td>{{ t.status }}</td>
+      <td><a class="btn btn-sm btn-primary" href="{{ url_for('download_ticket', order_id=t.id) }}">Ticket PDF</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

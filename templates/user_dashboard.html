@@ -1,0 +1,7 @@
+<h2>Welcome, {{ user.name }}</h2>
+<img src="{{ url_for('static', filename='profile_pics/' + user.profile_pic) }}" width="150">
+
+<form action="{{ url_for('upload_profile') }}" method="post" enctype="multipart/form-data">
+    <input type="file" name="profile_pic" accept="image/*">
+    <button type="submit">Upload</button>
+</form>

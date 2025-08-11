@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">My Orders</h2>
+
+{% if orders %}
+<div class="table-responsive">
+    <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>Order ID</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Total Amount (₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>#{{ order.id }}</td>
+                <td>{{ order.created_at.strftime('%d-%m-%Y %I:%M %p') if order.created_at else 'N/A' }}</td>
+                <td>
+                    {% if order.status == 'Completed' %}
+                        <span class="badge bg-success">{{ order.status }}</span>
+                    {% elif order.status == 'Pending' %}
+                        <span class="badge bg-warning text-dark">{{ order.status }}</span>
+                    {% else %}
+                        <span class="badge bg-secondary">{{ order.status }}</span>
+                    {% endif %}
+                </td>
+                <td>₹{{ "%.2f"|format(order.total_amount) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-info">
+    You have no orders yet. <a href="{{ url_for('menu') }}" class="alert-link">Start ordering now!</a>
+</div>
+{% endif %}
+{% endblock %}
