@@ -1,0 +1,48 @@
+:root{
+  --primary-blue: #0d6efd;
+  --header-blue: #0b7bd6;
+  --dark: #111;
+  --muted: #f5f7fa;
+  --accent-green: #28a745;
+}
+
+/* topbar */
+.topbar {
+  background: linear-gradient(90deg, #0b7bd6, #0a6ac3);
+  color: #fff;
+  padding: 14px 0;
+}
+.topbar .brand { font-weight:700; font-size:20px; letter-spacing:1px; }
+.topbar .nav-right { color:#fff; }
+
+/* auth card styles (login/register) */
+.auth-card {
+  max-width:460px;
+  margin-top:40px;
+  background:#fff;
+  border-radius:6px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+/* footer */
+.footer {
+  background: #0b7bd6;
+  color: white;
+  margin-top:40px;
+}
+
+/* buttons */
+.btn-success { background: var(--accent-green); border: none; }
+.btn-primary { background: var(--primary-blue); border: none; }
+
+/* cards and table */
+.card { border-radius:6px; }
+.table { background: #fff; }
+
+/* spacing tweaks */
+.container { max-width: 1100px; }
+
+/* small screens */
+@media (max-width: 575px) {
+  .auth-card { margin: 20px; }
+}
